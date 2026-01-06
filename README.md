@@ -1,48 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Access</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
+<meta charset="UTF-8">
+<title>Secure Access Terminal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        .container {
-            text-align: center;
-            background-color: #fff;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: #020b06;
+        font-family: "Courier New", monospace;
+        color: #00ff9c;
+    }
 
-        h1 {
-            color: #333;
-            margin-bottom: 20px;
-        }
+    /* subtle scanline effect */
+    body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: repeating-linear-gradient(
+            to bottom,
+            rgba(255,255,255,0.02),
+            rgba(255,255,255,0.02) 1px,
+            transparent 1px,
+            transparent 3px
+        );
+        pointer-events: none;
+    }
 
-        p {
-            color: #666;
-            font-size: 18px;
-        }
+    .container {
+        max-width: 850px;
+        margin: 70px auto;
+        padding: 25px;
+    }
 
-        .highlight {
-            color: #007bff;
-            font-weight: bold;
-        }
-    </style>
+    .heading {
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 35px;
+        text-shadow: 0 0 10px #00ff9c;
+    }
+
+    .terminal {
+        background: #010f09;
+        border: 1px solid #00ff9c;
+        border-radius: 10px;
+        padding: 25px;
+        box-shadow: 0 0 25px rgba(0,255,156,0.15);
+    }
+
+    .terminal-header {
+        font-size: 14px;
+        margin-bottom: 15px;
+        color: #6bffcb;
+    }
+
+    .data-area {
+        border: 1px dashed #00ff9c;
+        border-radius: 6px;
+        padding: 20px;
+        text-align: center;
+        background: rgba(0, 255, 156, 0.03);
+    }
+
+    .data-area p {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .blink {
+        animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+        0% { opacity: 1; }
+        50% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+
+    .footer {
+        margin-top: 35px;
+        text-align: center;
+        font-size: 12px;
+        color: #00cc7a;
+        opacity: 0.7;
+    }
+</style>
 </head>
+
 <body>
-    <div class="container">
-        <h1 class="highlight">Your Accessed Data is here 👇</h1>
-        <p>Data not showing due to your network connection. Please check your network connection and try again.</p>
+
+<div class="container">
+
+    <div class="heading">
+        Your Accessed Data is here... 👇🏻
     </div>
+
+    <div class="terminal">
+        <div class="terminal-header">
+            root@secure-node:/data/access <span class="blink">█</span>
+        </div>
+
+        <div class="data-area">
+            <p>
+                Your data is not showing due to your network connection.<br>
+                Kindly check your connection and try again.
+            </p>
+        </div>
+    </div>
+
+    <div class="footer">
+        ENCRYPTED SESSION • TRACE PROTECTION ENABLED
+    </div>
+
+</div>
+
 </body>
 </html>
